@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="shortcut icon" href="">
+    </head>
+
+    <body>
+        Welcome to MyTravelHistory 
+        <hr>
+
+        <div id="newUser"></div>       
+        Register as a new user:
+        <hr>
+
+        <label for="userName">User Name:</label><br/>
+        <input type="text" id="userName"/><br/>
+        <label for="email">Email Address:</label><br/>
+        <input type = "text" id="email"/><br/>
+        <label for="password">New Password:</label><br/>
+        <input type="text" id="password"/><br/>
+        
+        <button onclick="registerNewUser()">Submit</button> 
+
+        
+    </body>
+
+
+    <script>
+        function registerNewUser(){
+            let apiURL = "createAccount";
+            let userName= document.getElementById("userName").value;
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let newUser = '{"userName":"'+ userName + '", "email": "'+ email + '", "password": "' + password + '"}';
+            postData(apiURL,newUser);
+        }
+
+        function postData(apiURL, newUser){
+            let xhttp = new XMLHttpRequest();
+            // xhttp.onreadystatechange = function(){
+            //     if(this.readyState == 4 && this.status == 202){
+            //         document.getElementById("newUser").innerHTML = this.responseText;
+            //     }
+            // }    
+            xhttp.open("POST", "http://localhost:8082/"+ apiURL, true);
+                    xhttp.setRequestHeader("Content-type", "application/json");
+                    xhttp.send(newUser);
+        }
+
+
+    </script>
+</html>
