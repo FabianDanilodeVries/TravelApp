@@ -1,14 +1,19 @@
 package com.group2.MyTravelHistory.Model;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Accommodation extends HolidayLocation {
-    String accommodationType;
-    int numberOfRooms;
+
+    private String accommodationType;
+    private int numberOfRooms;
 
     public Accommodation(String name, String address, Long ownerId, int averageRating, String accommodationType, int numberOfRooms) {
         super(name, address, ownerId, averageRating);
         this.accommodationType = accommodationType;
         this.numberOfRooms = numberOfRooms;
     }
+
 
     public String getAccommodationType() {
         return accommodationType;
