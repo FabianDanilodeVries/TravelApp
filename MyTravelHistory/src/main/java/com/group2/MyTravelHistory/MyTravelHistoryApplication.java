@@ -1,5 +1,6 @@
 package com.group2.MyTravelHistory;
 
+import com.group2.MyTravelHistory.Model.Restaurant;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

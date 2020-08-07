@@ -6,63 +6,25 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Restaurant {
+public class Restaurant extends HolidayLocation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    private String country;
-    private String name;
-    private String address;
-    private Long ownerId;
-    private int averageRating;
-    private String restaurantType;
-    private int numberOfTables;
-    private boolean VegetarianOptions;
+    public Long id;
+    public String restaurantType;
+    public int numberOfTables;
+    public boolean VegetarianOptions;
 
-    public Restaurant(String country, String name, String address, Long ownerId, int averageRating, String restaurantType, int numberOfTables, boolean vegetarianOptions) {
-        this.country = country;                 this.name = name;                       this.address = address;                 this.ownerId = ownerId;
-        this.averageRating = averageRating;     this.restaurantType = restaurantType;   this.numberOfTables = numberOfTables;   this.VegetarianOptions = vegetarianOptions;
+
+    public Restaurant(String name, String address, Long ownerId, int averageRating, String restaurantType, int numberOfTables, boolean vegetarianOptions) {
+        super(name, address, ownerId, averageRating);
+        this.restaurantType = restaurantType;
+        this.numberOfTables = numberOfTables;
+        this.VegetarianOptions = vegetarianOptions;
     }
 
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public Long getOwnerId() {
-        return ownerId;
-    }
-
-    public void setOwnerId(Long ownerId) {
-        this.ownerId = ownerId;
-    }
-
-    public int getAverageRating() {
-        return averageRating;
-    }
-
-    public void setAverageRating(int averageRating) {
-        this.averageRating = averageRating;
+    public Long getId() {
+        return id;
     }
 
     public String getRestaurantType() {
