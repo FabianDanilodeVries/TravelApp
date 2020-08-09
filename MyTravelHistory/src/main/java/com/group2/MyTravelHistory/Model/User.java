@@ -10,7 +10,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    int id;
+    Long id;
     private String userName;
     private String email;
     private String password;
@@ -21,7 +21,7 @@ public class User {
         this.password = password;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 

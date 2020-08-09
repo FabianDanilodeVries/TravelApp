@@ -15,14 +15,20 @@ public class UserEndPoints {
     UserService us;
 
     @PostMapping("/createAccount")
-    public User createNewUser(@RequestBody User newUser){
-        return us.addUserToDao(newUser);
+    public void createNewUser(@RequestBody User newUser){
+        us.addUserToDao(newUser);
     }
 
-    @GetMapping("/checkCredentials")
-    public void checkCredentials(@RequestBody String userName,String password){
-//        us.checkUserInDAO(userName,password);
+    @GetMapping("/showAllUsers")
+    public Iterable<User> showAllUsers(){
+        return us.fetchAllUsersFromDAO();
     }
+
+
+//    @GetMapping("/checkCredentials")
+//    public void checkCredentials(@RequestBody String userName,String password){
+////        us.checkUserInDAO(userName,password);
+//    }
 
 
 

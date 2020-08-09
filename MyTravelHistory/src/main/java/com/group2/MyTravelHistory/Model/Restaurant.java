@@ -1,36 +1,23 @@
 package com.group2.MyTravelHistory.Model;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 @Entity
-public class Restaurant {
+public class Restaurant extends HolidayLocation {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    private String country;
-    private String name;
-    private String address;
-    private Long ownerId;
-    private int averageRating;
-    private String restaurantType;
-    private int numberOfTables;
-    private boolean VegetarianOptions;
+    public String restaurantType;
+    public int numberOfTables;
+    public boolean vegetarianOptions;
 
-    public Restaurant(String country, String name, String address, Long ownerId, int averageRating, String restaurantType, int numberOfTables, boolean vegetarianOptions) {
-        this.country = country;                 this.name = name;                       this.address = address;                 this.ownerId = ownerId;
-        this.averageRating = averageRating;     this.restaurantType = restaurantType;   this.numberOfTables = numberOfTables;   this.VegetarianOptions = vegetarianOptions;
+    public Restaurant(){
+        super();
+
     }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
+    public Restaurant(String name, String address, Long ownerId, int averageRating, String restaurantType, int numberOfTables, boolean vegetarianOptions) {
+        super(name, address, ownerId, averageRating);
+        this.restaurantType = restaurantType;
+        this.numberOfTables = numberOfTables;
+        this.vegetarianOptions = vegetarianOptions;
     }
 
     public String getName() {
@@ -57,7 +44,7 @@ public class Restaurant {
         this.ownerId = ownerId;
     }
 
-    public int getAverageRating() {
+    public double getAverageRating() {
         return averageRating;
     }
 
@@ -66,7 +53,7 @@ public class Restaurant {
     }
 
     public String getRestaurantType() {
-        return restaurantType;
+        return this.restaurantType;
     }
 
     public void setRestaurantType(String restaurantType) {
@@ -74,7 +61,7 @@ public class Restaurant {
     }
 
     public int getNumberOfTables() {
-        return numberOfTables;
+        return this.numberOfTables;
     }
 
     public void setNumberOfTables(int numberOfTables) {
@@ -82,10 +69,10 @@ public class Restaurant {
     }
 
     public boolean isVegetarianOptions() {
-        return VegetarianOptions;
+        return this.vegetarianOptions;
     }
 
     public void setVegetarianOptions(boolean vegetarianOptions) {
-        VegetarianOptions = vegetarianOptions;
+        this.vegetarianOptions = vegetarianOptions;
     }
 }

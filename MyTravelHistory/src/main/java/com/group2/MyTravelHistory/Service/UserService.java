@@ -14,8 +14,12 @@ public class UserService {
     @Autowired
     UserDAO uDao;
 
-    public User addUserToDao(User newUser){
-        return uDao.save(newUser);
+    public void addUserToDao(User newUser){
+        uDao.save(newUser);
+    }
+
+    public Iterable<User>  fetchAllUsersFromDAO(){
+        return uDao.findAll();
     }
 
 

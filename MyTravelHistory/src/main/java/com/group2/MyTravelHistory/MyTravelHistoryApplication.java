@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class MyTravelHistoryApplication {
 
-	public void MyTravelHistoryApplicatoin(){
+	public void MyTravelHistoryApplication(){
 		return;
 	}
 	public static void main(String[] args) {
