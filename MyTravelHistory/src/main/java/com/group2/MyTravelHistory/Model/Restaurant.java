@@ -1,18 +1,21 @@
 package com.group2.MyTravelHistory.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import java.util.Set;
 
 @Entity
 public class Restaurant extends HolidayLocation {
-
     public String restaurantType;
     public int numberOfTables;
     public boolean vegetarianOptions;
+    @OneToMany(mappedBy = "restaurantId")
+    @JsonBackReference
+    private Set<HolidayLocationVisit> holidayLocationVisit;
 
-    public Restaurant(){
-        super();
 
-    }
     public Restaurant(String name, String address, Long ownerId, int averageRating, String restaurantType, int numberOfTables, boolean vegetarianOptions) {
         super(name, address, ownerId, averageRating);
         this.restaurantType = restaurantType;

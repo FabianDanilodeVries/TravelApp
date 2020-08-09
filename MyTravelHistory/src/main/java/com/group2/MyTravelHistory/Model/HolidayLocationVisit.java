@@ -1,26 +1,47 @@
 package com.group2.MyTravelHistory.Model;
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
 public class HolidayLocationVisit {
-    private HolidayLocation holidayLocation;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long visitId;
     private String comment;
     private double rating;
     private Date datum;
+    @ManyToOne
+    @JoinColumn(name = "accommodation_id")
+    private Accommodation accommodationId;
+    @ManyToOne
+    @JoinColumn(name = "restaurant_id")
+    private Restaurant restaurantId;
 
-    public HolidayLocationVisit(HolidayLocation holidayLocation, String comment, double rating, Date datum) {
-        this.holidayLocation = holidayLocation;
+    public HolidayLocationVisit( String comment, double rating, Date datum) {
         this.comment = comment;
         this.rating = rating;
         this.datum = datum;
     }
 
-    public HolidayLocation getHolidayLocation() {
-        return holidayLocation;
+    public Accommodation getAccommodationId() {
+        return accommodationId;
     }
 
-    public void setHolidayLocation(HolidayLocation holidayLocation) {
-        this.holidayLocation = holidayLocation;
+    public void setAccommodationId(Accommodation accommodationId) {
+        this.accommodationId = accommodationId;
+    }
+
+    public Restaurant getRestaurantId() {
+        return restaurantId;
+    }
+
+    public void setRestaurantId(Restaurant restaurantId) {
+        this.restaurantId = restaurantId;
+    }
+
+    public Long getVisitId() {
+        return visitId;
     }
 
     public String getComment() {
