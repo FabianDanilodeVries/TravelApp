@@ -1,6 +1,7 @@
 package com.group2.MyTravelHistory.Model;
 
 import javax.persistence.*;
+
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class HolidayLocation {
