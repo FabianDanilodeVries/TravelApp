@@ -15,7 +15,6 @@ public class Restaurant extends HolidayLocation {
     @JsonBackReference
     private Set<HolidayLocationVisit> holidayLocationVisit;
 
-
     public Restaurant(String name, String address, Long ownerId, int averageRating, String restaurantType, int numberOfTables, boolean vegetarianOptions) {
         super(name, address, ownerId, averageRating);
         this.restaurantType = restaurantType;
