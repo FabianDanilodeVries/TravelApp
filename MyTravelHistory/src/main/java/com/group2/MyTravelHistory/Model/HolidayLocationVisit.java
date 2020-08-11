@@ -12,33 +12,22 @@ public class HolidayLocationVisit {
     private double rating;
     private Date datum;
     @ManyToOne
-    @JoinColumn(name = "accommodation_id")
-    private Accommodation accommodationId;
+    @JoinColumn(name="restId", nullable=false)
+    private Restaurant restaurant;
     @ManyToOne
-    @JoinColumn(name = "restaurant_id")
-    private Restaurant restaurantId;
+    @JoinColumn(name="accId", nullable=false)
+    private Accommodation accommodation;
 
-    public HolidayLocationVisit( String comment, double rating, Date datum) {
+    public HolidayLocationVisit() {
+    }
+
+    public HolidayLocationVisit(String comment, double rating, Date datum) {
         this.comment = comment;
         this.rating = rating;
         this.datum = datum;
     }
 
-    public Accommodation getAccommodationId() {
-        return accommodationId;
-    }
 
-    public void setAccommodationId(Accommodation accommodationId) {
-        this.accommodationId = accommodationId;
-    }
-
-    public Restaurant getRestaurantId() {
-        return restaurantId;
-    }
-
-    public void setRestaurantId(Restaurant restaurantId) {
-        this.restaurantId = restaurantId;
-    }
 
     public Long getVisitId() {
         return visitId;

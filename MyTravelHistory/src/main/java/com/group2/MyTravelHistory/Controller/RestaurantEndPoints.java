@@ -16,4 +16,6 @@ public class RestaurantEndPoints {
         return resService.getAllRestaurantsFromDAO();
     }
 
+
+
 }

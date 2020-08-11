@@ -44,6 +44,33 @@ function showAllRestaurants() {
 }
 
 
+function findUserByUserName() {
+    let userName= document.getElementById("userName2").value;
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function(){
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+          if (xhr.status === 'OK' || (xhr.status >= 200 && xhr.status < 400)) {
+              var inhoudDB = JSON.parse(this.responseText);
+//              console.log("VERSTUREN GET Restaurants GELUKT!");
+//              var userNameFound = "";
+//              for (x=0; x<inhoudDB.length; x++) {
+//                  userNameFound +=
+//                  `
+//                  <div>${inhoudDB[x].userName}</div>
+//                  `;
+//              }
+
+              document.getElementById("newUser2").innerHTML = inhoudDB;
+          } else {
+//              console.log("VERSTUREN GET EMPLOYEE IS NIET GELUKT!");
+          }
+      }
+  }
+  xhr.open("GET", "http://localhost:8082/user/findByUserName/" + userName, true);
+  xhr.send();
+}
+
+
 
 
 

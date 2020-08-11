@@ -1,25 +1,39 @@
 package com.group2.MyTravelHistory.Model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-public class Restaurant extends HolidayLocation {
-    public String restaurantType;
-    public int numberOfTables;
-    public boolean vegetarianOptions;
-    @OneToMany(mappedBy = "restaurantId")
-    @JsonBackReference
-    private Set<HolidayLocationVisit> holidayLocationVisit;
+public class Restaurant {
 
-    public Restaurant(String name, String address, Long ownerId, int averageRating, String restaurantType, int numberOfTables, boolean vegetarianOptions) {
-        super(name, address, ownerId, averageRating);
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long restId;
+    private String name;
+    private String address;
+    private Long ownerId;
+    private double averageRating;
+    private String restaurantType;
+    private int numberOfTables;
+    private boolean vegetarianOptions;
+    @OneToMany(mappedBy = "restaurant")
+    private Set<Restaurant> restaurant;
+
+    public Restaurant() {
+    }
+
+    public Restaurant(String name, String address, Long ownerId, double averageRating, String restaurantType, int numberOfTables, boolean vegetarianOptions) {
+        this.name = name;
+        this.address = address;
+        this.ownerId = ownerId;
+        this.averageRating = averageRating;
         this.restaurantType = restaurantType;
         this.numberOfTables = numberOfTables;
         this.vegetarianOptions = vegetarianOptions;
+    }
+
+    public Long getRestId() {
+        return restId;
     }
 
     public String getName() {
@@ -50,12 +64,12 @@ public class Restaurant extends HolidayLocation {
         return averageRating;
     }
 
-    public void setAverageRating(int averageRating) {
+    public void setAverageRating(double averageRating) {
         this.averageRating = averageRating;
     }
 
     public String getRestaurantType() {
-        return this.restaurantType;
+        return restaurantType;
     }
 
     public void setRestaurantType(String restaurantType) {
@@ -63,7 +77,7 @@ public class Restaurant extends HolidayLocation {
     }
 
     public int getNumberOfTables() {
-        return this.numberOfTables;
+        return numberOfTables;
     }
 
     public void setNumberOfTables(int numberOfTables) {
@@ -71,10 +85,18 @@ public class Restaurant extends HolidayLocation {
     }
 
     public boolean isVegetarianOptions() {
-        return this.vegetarianOptions;
+        return vegetarianOptions;
     }
 
     public void setVegetarianOptions(boolean vegetarianOptions) {
         this.vegetarianOptions = vegetarianOptions;
+    }
+
+    public Set<Restaurant> getRestaurants() {
+        return restaurant;
+    }
+
+    public void setRestaurants(Set<Restaurant> restaurant) {
+        this.restaurant = restaurant;
     }
 }
