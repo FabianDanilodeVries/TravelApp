@@ -2,7 +2,6 @@ package com.group2.MyTravelHistory.Model;
 
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 public class Accommodation {
@@ -10,23 +9,25 @@ public class Accommodation {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long accId;
-    private String name;
-    private String address;
+    private String accommodationName;
+    private String accommodationAddress;
+    private String country;
     private Long ownerId;
-    private double averageRating;
+    private double accommodationAverageRating;
+    private int ratingCount;
     private String accommodationType;
     private int numberOfRooms;
-    @OneToMany(mappedBy = "accommodation")
-    private Set<Accommodation> accommodation;
 
     public Accommodation() {
     }
 
-    public Accommodation(String name, String address, Long ownerId, double averageRating, String accommodationType, int numberOfRooms) {
-        this.name = name;
-        this.address = address;
+    public Accommodation(String accommodationName, String accommodationAddress, String country, Long ownerId, String accommodationType, int numberOfRooms) {
+        this.accommodationName = accommodationName;
+        this.accommodationAddress = accommodationAddress;
+        this.country = country;
         this.ownerId = ownerId;
-        this.averageRating = averageRating;
+        this.accommodationAverageRating = 0;
+        this.ratingCount = 0;
         this.accommodationType = accommodationType;
         this.numberOfRooms = numberOfRooms;
     }
@@ -35,20 +36,28 @@ public class Accommodation {
         return accId;
     }
 
-    public String getName() {
-        return name;
+    public String getAccommodationName() {
+        return accommodationName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAccommodationName(String accommodationName) {
+        this.accommodationName = accommodationName;
     }
 
-    public String getAddress() {
-        return address;
+    public String getAccommodationAddress() {
+        return accommodationAddress;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setAccommodationAddress(String accommodationAddress) {
+        this.accommodationAddress = accommodationAddress;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public Long getOwnerId() {
@@ -59,12 +68,21 @@ public class Accommodation {
         this.ownerId = ownerId;
     }
 
-    public double getAverageRating() {
-        return averageRating;
+    public double getAccommodationAverageRating() {
+        return accommodationAverageRating;
     }
 
-    public void setAverageRating(double averageRating) {
-        this.averageRating = averageRating;
+    public void updateAccommodationAverageRating(double rating) {
+        this.accommodationAverageRating = (((this.accommodationAverageRating*this.ratingCount)+rating)/(this.ratingCount + 1));
+        updateRatingCount();
+    }
+
+    public int getRatingCount() {
+        return ratingCount;
+    }
+
+    public void updateRatingCount() {
+        this.ratingCount +=1;
     }
 
     public String getAccommodationType() {
@@ -81,13 +99,5 @@ public class Accommodation {
 
     public void setNumberOfRooms(int numberOfRooms) {
         this.numberOfRooms = numberOfRooms;
-    }
-
-    public Set<Accommodation> getAccommodations() {
-        return accommodation;
-    }
-
-    public void setAccommodations(Set<Accommodation> accommodation) {
-        this.accommodation = accommodation;
     }
 }

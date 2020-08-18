@@ -1,7 +1,6 @@
 package com.group2.MyTravelHistory.Model;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 public class Restaurant {
@@ -9,24 +8,26 @@ public class Restaurant {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long restId;
-    private String name;
-    private String address;
+    private String restaurantName;
+    private String restaurantAddress;
+    private String country;
     private Long ownerId;
-    private double averageRating;
+    private double restaurantAverageRating;
+    private int ratingCount;
     private String restaurantType;
     private int numberOfTables;
     private boolean vegetarianOptions;
-    @OneToMany(mappedBy = "restaurant")
-    private Set<Restaurant> restaurant;
 
     public Restaurant() {
     }
 
-    public Restaurant(String name, String address, Long ownerId, double averageRating, String restaurantType, int numberOfTables, boolean vegetarianOptions) {
-        this.name = name;
-        this.address = address;
+    public Restaurant(String restaurantName, String restaurantAddress, String country, Long ownerId, String restaurantType, int numberOfTables, boolean vegetarianOptions) {
+        this.restaurantName = restaurantName;
+        this.restaurantAddress = restaurantAddress;
+        this.country = country;
         this.ownerId = ownerId;
-        this.averageRating = averageRating;
+        this.restaurantAverageRating = 0.0;
+        this.ratingCount = 0;
         this.restaurantType = restaurantType;
         this.numberOfTables = numberOfTables;
         this.vegetarianOptions = vegetarianOptions;
@@ -36,20 +37,28 @@ public class Restaurant {
         return restId;
     }
 
-    public String getName() {
-        return name;
+    public String getRestaurantName() {
+        return restaurantName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setRestaurantName(String restaurantName) {
+        this.restaurantName = restaurantName;
     }
 
-    public String getAddress() {
-        return address;
+    public String getRestaurantAddress() {
+        return restaurantAddress;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setRestaurantAddress(String restaurantAddress) {
+        this.restaurantAddress = restaurantAddress;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public Long getOwnerId() {
@@ -60,12 +69,21 @@ public class Restaurant {
         this.ownerId = ownerId;
     }
 
-    public double getAverageRating() {
-        return averageRating;
+    public double getRestaurantAverageRating() {
+        return restaurantAverageRating;
     }
 
-    public void setAverageRating(double averageRating) {
-        this.averageRating = averageRating;
+    public void updateRestaurantAverageRating(double rating) {
+        this.restaurantAverageRating = (((this.restaurantAverageRating*this.ratingCount)+rating)/(this.ratingCount + 1));
+        updateRatingCount();
+    }
+
+    public int getRatingCount() {
+        return ratingCount;
+    }
+
+    public void updateRatingCount() {
+        this.ratingCount +=1;
     }
 
     public String getRestaurantType() {
@@ -90,13 +108,5 @@ public class Restaurant {
 
     public void setVegetarianOptions(boolean vegetarianOptions) {
         this.vegetarianOptions = vegetarianOptions;
-    }
-
-    public Set<Restaurant> getRestaurants() {
-        return restaurant;
-    }
-
-    public void setRestaurants(Set<Restaurant> restaurant) {
-        this.restaurant = restaurant;
     }
 }

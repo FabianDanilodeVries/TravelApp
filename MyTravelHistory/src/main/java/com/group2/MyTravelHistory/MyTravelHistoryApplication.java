@@ -11,7 +11,6 @@ public class MyTravelHistoryApplication {
 	}
 	public static void main(String[] args) {
 		SpringApplication.run(MyTravelHistoryApplication.class, args);
-
 	}
 
 
