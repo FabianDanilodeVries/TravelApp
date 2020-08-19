@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" href="#">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Your overview</title>
+</head>
+
+<body onload="showAllRestaurants()">
+
+<div class="topnav">
+    <a class="active" href="User.html">Home</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <input type="text" placeholder="Search..">
+</div>
+<h1>Add a restaurant <span id="helloUser"></span></h1>
+<hr><hr>
+
+<div id="openModalHere"></div>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#restaurantModal" >Show Restaurants</button>
+<hr><hr>
+<div id="showAddRestaurantInputFields"></div>
+
+<!--<hr>-->
+<!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#restaurantModal">Add Restaurant</button>-->
+<!--<button type="button" class="btn btn-info"    data-toggle="modal" data-target="#AccommodationModal">Add Accommodation</button>-->
+<!--&lt;!&ndash;<button type="button" class="btn btn-default" data-toggle="modal" data-target="#demo-3">Launch Modal #3</button>&ndash;&gt;-->
+
+<!-- [ Add Restaurant Modal] -->
+<!--<div class="modal fade" id="restaurantModal" tabindex="-1">-->
+<!--    <div class="modal-dialog">-->
+<!--        <div class="modal-content">-->
+<!--            <button type="button" class="close" data-dismiss="modal"><i class="icon-xs-o-md"></i></button>-->
+<!--            <div class="modal-header">-->
+<!--                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+<!--                <h4 class="modal-title caps"><strong>Add Restaurant Visit</strong></h4>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--                <div class="form-group">-->
+<!--                    <div class="input-group">-->
+<!--                        <label class="control-label col-md-4"><strong>Name:</strong></label>-->
+<!--                        <input type="text" class="form-control" id="restModalname" disabled />-->
+<!--                        <label class="control-label col-md-4"><strong>Address:</strong></label>-->
+<!--                        <input type="text" class="form-control" id="restModalAddress" disabled/>-->
+<!--                        <label class="control-label col-md-4"><strong>Country:</strong></label>-->
+<!--                        <input type="text" class="form-control" id="restModalCountry" disabled/>-->
+<!--                        <label class="control-label col-md-4"><strong>Average rating:</strong></label>-->
+<!--                        <input type="text" class="form-control" id="restModalAverageRating" disabled/>-->
+<!--                        <label class="control-label col-md-4"><strong>Restaurant type:</strong></label>-->
+<!--                        <input type="text" class="form-control" id="restModalRestaurantType" disabled/>-->
+<!--                        <label class="control-label col-md-4"><strong>Number of tables:</strong></label>-->
+<!--                        <input type="text" class="form-control" id="restModalNumberOfTables" disabled/>-->
+<!--                        <label class="control-label col-md-4"><strong>Vegetarian options:</strong></label>-->
+<!--                        <input type="text" class="form-control" id="restModalVegetarianOptions" disabled/>-->
+<!--                        &lt;!&ndash;                        <span class="input-group-btn"><button class="btn btn-default" type="button">Action</button></span>&ndash;&gt;-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="modal-footer">-->
+<!--                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>-->
+<!--                &lt;!&ndash;                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#accommodationModal" data-dismiss="modal"></button>&ndash;&gt;-->
+<!--                &lt;!&ndash;                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#demo-3" data-dismiss="modal">Close current, Launch Modal #3</button>&ndash;&gt;-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash; [ Modal #2 ] &ndash;&gt;-->
+<!--<div class="modal fade" id="AccommodationModal" tabindex="-1">-->
+<!--    <div class="modal-dialog">-->
+<!--        <div class="modal-content">-->
+<!--            <button type="button" class="close" data-dismiss="modal"><i class="icon-xs-o-md"></i></button>-->
+<!--            <div class="modal-header">-->
+<!--                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+<!--                <h4 class="modal-title caps"><strong>Add Accommodation Visit</strong></h4>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--                <div class="form-group">-->
+<!--                    <div class="input-group">-->
+<!--                        <label class="control-label col-md-4"><strong>Name:</strong></label>-->
+<!--                        <input type="text" class="form-control" id="accModalName" disabled />-->
+<!--                        <label class="control-label col-md-4"><strong>Address:</strong></label>-->
+<!--                        <input type="text" class="form-control" id="accModalAddress" disabled/>-->
+<!--                        <label class="control-label col-md-4"><strong>Country:</strong></label>-->
+<!--                        <input type="text" class="form-control" id="accModalCountry" disabled/>-->
+<!--                        <label class="control-label col-md-4"><strong>Average rating:</strong></label>-->
+<!--                        <input type="text" class="form-control" id="accModalAverageRating" disabled/>-->
+<!--                        <label class="control-label col-md-4"><strong>Accommodation type:</strong></label>-->
+<!--                        <input type="text" class="form-control" id="accModalAccommodationType" disabled/>-->
+<!--                        <label class="control-label col-md-4"><strong>Number of rooms:</strong></label>-->
+<!--                        <input type="text" class="form-control" id="accModalNumberOfRooms" disabled/>-->
+<!--                        &lt;!&ndash;                        <span class="input-group-btn"><button class="btn btn-default" type="button">Action</button></span>&ndash;&gt;-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="modal-footer">-->
+<!--                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>-->
+<!--                &lt;!&ndash;                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#restaurantModal" data-dismiss="modal">Close current, Launch Modal #1</button>&ndash;&gt;-->
+<!--                &lt;!&ndash;                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#demo-3" data-dismiss="modal">Close current, Launch Modal #3</button>&ndash;&gt;-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<hr>
+
+
+
+
+
+</body>
+
+<script src="MyTravelHistory.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="website.css">
+</html>

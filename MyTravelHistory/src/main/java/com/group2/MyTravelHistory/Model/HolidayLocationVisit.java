@@ -12,32 +12,19 @@ public class HolidayLocationVisit {
     private double rating;
     private Date datum;
     @ManyToOne
-    @JoinColumn(name = "accommodation_id")
-    private Accommodation accommodationId;
+    private Restaurant restaurant;
     @ManyToOne
-    @JoinColumn(name = "restaurant_id")
-    private Restaurant restaurantId;
+    private Accommodation accommodation;
+    @ManyToOne
+    private User user;
 
-    public HolidayLocationVisit( String comment, double rating, Date datum) {
+    public HolidayLocationVisit() {
+    }
+
+    public HolidayLocationVisit(String comment, double rating, Date datum) {
         this.comment = comment;
         this.rating = rating;
         this.datum = datum;
-    }
-
-    public Accommodation getAccommodationId() {
-        return accommodationId;
-    }
-
-    public void setAccommodationId(Accommodation accommodationId) {
-        this.accommodationId = accommodationId;
-    }
-
-    public Restaurant getRestaurantId() {
-        return restaurantId;
-    }
-
-    public void setRestaurantId(Restaurant restaurantId) {
-        this.restaurantId = restaurantId;
     }
 
     public Long getVisitId() {
@@ -66,5 +53,29 @@ public class HolidayLocationVisit {
 
     public void setDatum(Date datum) {
         this.datum = datum;
+    }
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
+    }
+
+    public Accommodation getAccommodation() {
+        return accommodation;
+    }
+
+    public void setAccommodation(Accommodation accommodation) {
+        this.accommodation = accommodation;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

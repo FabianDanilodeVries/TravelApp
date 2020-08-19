@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" href="#">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Your overview</title>
+</head>
+
+<body onload="localStorageUserId()">
+
+<div class="topnav">
+    <a class="active" href="InLogRegister.html">Home</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <input type="text" placeholder="Search..">
+</div>
+<h1>Welcome to your travel history <span id="helloUser"></span></h1>
+<hr><hr>
+
+<hr>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#restaurantModal" onclick="window.location.href='/AddRestaurant.html'">Add Restaurant visit</button>
+<button type="button" class="btn btn-info"    data-toggle="modal" data-target="#AccommodationModal">Add Accommodation visit</button>
+
+<hr>
+<h2>Overview visits:</h2>
+<div id="overviewVisits"></div>
+
+
+
+
+
+</body>
+
+<div id="countriesVisited"></div>
+
+
+<script src="MyTravelHistory.js"></script>
+<script>
+    document.getElementById("helloUser").innerHTML=localStorage.getItem("userLoggedIn");
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="website.css">
+</html>

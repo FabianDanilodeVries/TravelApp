@@ -1,41 +1,64 @@
 package com.group2.MyTravelHistory.Model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import java.util.Set;
+import javax.persistence.*;
 
 @Entity
-public class Restaurant extends HolidayLocation {
-    public String restaurantType;
-    public int numberOfTables;
-    public boolean vegetarianOptions;
-    @OneToMany(mappedBy = "restaurantId")
-    @JsonBackReference
-    private Set<HolidayLocationVisit> holidayLocationVisit;
+public class Restaurant {
 
-    public Restaurant(String name, String address, Long ownerId, int averageRating, String restaurantType, int numberOfTables, boolean vegetarianOptions) {
-        super(name, address, ownerId, averageRating);
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long restId;
+    private String restaurantName;
+    private String restaurantAddress;
+    private String country;
+    private Long ownerId;
+    private double restaurantAverageRating;
+    private int ratingCount;
+    private String restaurantType;
+    private int numberOfTables;
+    private boolean vegetarianOptions;
+
+    public Restaurant() {
+    }
+
+    public Restaurant(String restaurantName, String restaurantAddress, String country, Long ownerId, String restaurantType, int numberOfTables, boolean vegetarianOptions) {
+        this.restaurantName = restaurantName;
+        this.restaurantAddress = restaurantAddress;
+        this.country = country;
+        this.ownerId = ownerId;
+        this.restaurantAverageRating = 0.0;
+        this.ratingCount = 0;
         this.restaurantType = restaurantType;
         this.numberOfTables = numberOfTables;
         this.vegetarianOptions = vegetarianOptions;
     }
 
-    public String getName() {
-        return name;
+    public Long getRestId() {
+        return restId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getRestaurantName() {
+        return restaurantName;
     }
 
-    public String getAddress() {
-        return address;
+    public void setRestaurantName(String restaurantName) {
+        this.restaurantName = restaurantName;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public String getRestaurantAddress() {
+        return restaurantAddress;
+    }
+
+    public void setRestaurantAddress(String restaurantAddress) {
+        this.restaurantAddress = restaurantAddress;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public Long getOwnerId() {
@@ -46,16 +69,25 @@ public class Restaurant extends HolidayLocation {
         this.ownerId = ownerId;
     }
 
-    public double getAverageRating() {
-        return averageRating;
+    public double getRestaurantAverageRating() {
+        return restaurantAverageRating;
     }
 
-    public void setAverageRating(int averageRating) {
-        this.averageRating = averageRating;
+    public void updateRestaurantAverageRating(double rating) {
+        this.restaurantAverageRating = (((this.restaurantAverageRating*this.ratingCount)+rating)/(this.ratingCount + 1));
+        updateRatingCount();
+    }
+
+    public int getRatingCount() {
+        return ratingCount;
+    }
+
+    public void updateRatingCount() {
+        this.ratingCount +=1;
     }
 
     public String getRestaurantType() {
-        return this.restaurantType;
+        return restaurantType;
     }
 
     public void setRestaurantType(String restaurantType) {
@@ -63,7 +95,7 @@ public class Restaurant extends HolidayLocation {
     }
 
     public int getNumberOfTables() {
-        return this.numberOfTables;
+        return numberOfTables;
     }
 
     public void setNumberOfTables(int numberOfTables) {
@@ -71,7 +103,7 @@ public class Restaurant extends HolidayLocation {
     }
 
     public boolean isVegetarianOptions() {
-        return this.vegetarianOptions;
+        return vegetarianOptions;
     }
 
     public void setVegetarianOptions(boolean vegetarianOptions) {
