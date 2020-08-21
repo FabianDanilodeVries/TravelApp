@@ -37,6 +37,6 @@ public class AccommodationEndPoints {
 //        };
 
 
-        return accommodationList.stream().filter(a -> a.getNumberOfRooms() > 2).map( a -> new AccommodationByNameDto(a.getAccommodationName(), a.getAccommodationAddress()));
+        return accommodationList.stream().map( a -> new AccommodationByNameDto(a.getAccommodationName(), a.getAccommodationAddress()));
     }
 }
