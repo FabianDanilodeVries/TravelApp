@@ -10,18 +10,22 @@ public class Accommodation {
     private Long accId;
     private String accommodationName;
     private String accommodationAddress;
+    private String country;
     private Long ownerId;
-    private double averageRating;
+    private double accommodationAverageRating;
+    private int ratingCount;
     private String accommodationType;
     private int numberOfRooms;
 
     public Accommodation() {
     }
-    public Accommodation(String accommodationName, String accommodationAddress, Long ownerId, double averageRating, String accommodationType, int numberOfRooms) {
+    public Accommodation(String accommodationName, String accommodationAddress, String country, Long ownerId, String accommodationType, int numberOfRooms) {
         this.accommodationName = accommodationName;
         this.accommodationAddress = accommodationAddress;
+        this.country = country;
         this.ownerId = ownerId;
-        this.averageRating = averageRating;
+        this.accommodationAverageRating = 0;
+        this.ratingCount = 0;
         this.accommodationType = accommodationType;
         this.numberOfRooms = numberOfRooms;
     }
@@ -46,6 +50,14 @@ public class Accommodation {
         this.accommodationAddress = accommodationAddress;
     }
 
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
     public Long getOwnerId() {
         return ownerId;
     }
@@ -54,12 +66,21 @@ public class Accommodation {
         this.ownerId = ownerId;
     }
 
-    public double getAverageRating() {
-        return averageRating;
+    public double getAccommodationAverageRating() {
+        return accommodationAverageRating;
     }
 
-    public void setAverageRating(double averageRating) {
-        this.averageRating = averageRating;
+    public void updateAccommodationAverageRating(double rating) {
+        this.accommodationAverageRating = (((this.accommodationAverageRating*this.ratingCount)+rating)/(this.ratingCount + 1));
+        updateRatingCount();
+    }
+
+    public int getRatingCount() {
+        return ratingCount;
+    }
+
+    public void updateRatingCount() {
+        this.ratingCount +=1;
     }
 
     public String getAccommodationType() {

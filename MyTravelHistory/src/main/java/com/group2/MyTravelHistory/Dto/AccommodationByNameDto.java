@@ -10,7 +10,6 @@ public class AccommodationByNameDto {
     private String accommodationName;
     private String accommodationAddress;
 
-
     public AccommodationByNameDto() {
     }
 
@@ -18,7 +17,7 @@ public class AccommodationByNameDto {
         this.accommodationName = accommodationName;
         this.accommodationAddress = accommodationAddress;
     }
-
+    
     public String getAccommodationName() {
         return accommodationName;
     }
@@ -35,3 +34,4 @@ public class AccommodationByNameDto {
         this.accommodationAddress = accommodationAddress;
     }
 }
+

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
+=======
 
 @RestController
 public class AccommodationEndPoints {
@@ -27,7 +28,7 @@ public class AccommodationEndPoints {
     }
 
     @GetMapping("/user/findAccommodationByName/{accommodationName}")
-    public Stream<AccommodationByNameDto> findAccommodationByNameLike(@PathVariable("accommodationName") String accommodationName){
+    public Stream<AccommodationByNameDto> findAccommodationByNameLike(@PathVariable("accommodationName") String accommodationName) {
         List<Accommodation> accommodationList = this.accService.findAccommodationByNameLike("%" + accommodationName + "%");
 //        List<AccommodationByNameDto> accBYNameDtoList = new ArrayList<>();
 //        for (Accommodation a : accommodationList) {
@@ -37,6 +38,7 @@ public class AccommodationEndPoints {
 //        };
 
 
-        return accommodationList.stream().map( a -> new AccommodationByNameDto(a.getAccommodationName(), a.getAccommodationAddress()));
-    }
+        return accommodationList.stream().map(a -> new AccommodationByNameDto(a.getAccommodationName(), a.getAccommodationAddress()));
+    }    
 }
+
