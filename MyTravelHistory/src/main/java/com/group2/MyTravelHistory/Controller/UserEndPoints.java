@@ -1,6 +1,5 @@
 package com.group2.MyTravelHistory.Controller;
 
-
 import com.group2.MyTravelHistory.Model.User;
 import com.group2.MyTravelHistory.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +9,7 @@ import java.util.List;
 
 @RestController
 public class UserEndPoints {
+
     @Autowired
     UserService us;
 

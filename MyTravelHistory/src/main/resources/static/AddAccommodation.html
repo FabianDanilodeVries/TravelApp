@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="shortcut icon" href="#">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        Welcome to MyTravelHistory
+        <hr>
+
+        Register a new accommodation:
+        <hr>
+
+        <label for="accommodationName">Accommodation Name:</label><br/>
+        <input type="text" id="accommodationName"/><br/>
+        <label for="accommodationAddress">Address:</label><br/>
+        <input type ="text" id="accommodationAddress"/><br/>
+        <label for="accommodationType">Accommodation Type:</label><br/>
+        <input type="text" id="accommodationType"/><br/>
+        <label for="numberOfRooms">Number of Rooms:</label><br/>
+        <input type="number" id="numberOfRooms"/><br/>
+
+        <button onclick="registerNewAccommodation()">Submit</button>
+
+
+        <button onclick="showAllAccommodations()">Get All Accommodations</button>
+        <table id="grid">
+            <td id="accommodationIDth"></td>
+            <td id="accommodationNameth"></td>
+            <td id="accommodationAddressth"></td>
+            <td id="accommodationOwnerIDth"></td>
+            <td id="accommodationAverageRatingth"></td>
+            <td id="accommodationTypeth"></td>
+            <td id="accommodationNumberOfRoomsth"></td>
+        </table>
+        <div id="accommodationdiv"></div>
+
+    </body>
+
+    <script src="script.js"></script>
+    <style>
+        #accommodationdiv {background-color:red;}
+        #grid {grid-auto-rows: 100px;}
+    </style>
+
+</html>

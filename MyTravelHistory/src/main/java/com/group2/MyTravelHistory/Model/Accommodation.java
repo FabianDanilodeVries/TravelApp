@@ -1,8 +1,6 @@
 package com.group2.MyTravelHistory.Model;
 
-
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 public class Accommodation {
@@ -10,21 +8,18 @@ public class Accommodation {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long accId;
-    private String name;
-    private String address;
+    private String accommodationName;
+    private String accommodationAddress;
     private Long ownerId;
     private double averageRating;
     private String accommodationType;
     private int numberOfRooms;
-    @OneToMany(mappedBy = "accommodation")
-    private Set<Accommodation> accommodation;
 
     public Accommodation() {
     }
-
-    public Accommodation(String name, String address, Long ownerId, double averageRating, String accommodationType, int numberOfRooms) {
-        this.name = name;
-        this.address = address;
+    public Accommodation(String accommodationName, String accommodationAddress, Long ownerId, double averageRating, String accommodationType, int numberOfRooms) {
+        this.accommodationName = accommodationName;
+        this.accommodationAddress = accommodationAddress;
         this.ownerId = ownerId;
         this.averageRating = averageRating;
         this.accommodationType = accommodationType;
@@ -35,20 +30,20 @@ public class Accommodation {
         return accId;
     }
 
-    public String getName() {
-        return name;
+    public String getAccommodationName() {
+        return accommodationName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAccommodationName(String accommodationName) {
+        this.accommodationName = accommodationName;
     }
 
-    public String getAddress() {
-        return address;
+    public String getAccommodationAddress() {
+        return accommodationAddress;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setAccommodationAddress(String accommodationAddress) {
+        this.accommodationAddress = accommodationAddress;
     }
 
     public Long getOwnerId() {
@@ -81,13 +76,5 @@ public class Accommodation {
 
     public void setNumberOfRooms(int numberOfRooms) {
         this.numberOfRooms = numberOfRooms;
-    }
-
-    public Set<Accommodation> getAccommodations() {
-        return accommodation;
-    }
-
-    public void setAccommodations(Set<Accommodation> accommodation) {
-        this.accommodation = accommodation;
     }
 }
