@@ -12,9 +12,12 @@ public class HolidayLocationVisit {
     private double rating;
     private Date datum;
     @ManyToOne
+    @JoinColumn(foreignKey = @ForeignKey(name = "restId"))
     private Restaurant restaurant;
     @ManyToOne
+    @JoinColumn(foreignKey = @ForeignKey(name = "accId"))
     private Accommodation accommodation;
+    @JoinColumn(foreignKey = @ForeignKey(name = "userId"))
     @ManyToOne
     private User user;
 

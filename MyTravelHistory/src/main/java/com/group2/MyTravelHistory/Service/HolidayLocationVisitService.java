@@ -25,7 +25,7 @@ public class HolidayLocationVisitService {
     }
 
     public List<HolidayLocationVisit> findUserHLVisits(Long userId){
-        return HLVisitDAO.findAllHLVisitByUserId(userId);
+        return HLVisitDAO.findHolidayLocationVisitByUserUserId(userId);
     }
 
     public List<HolidayLocationVisit> searchHLVisitByCountry(String country){
