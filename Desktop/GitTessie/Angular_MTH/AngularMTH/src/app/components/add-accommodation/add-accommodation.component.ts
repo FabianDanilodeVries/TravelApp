@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Accommodation } from 'src/app/Model/Accommodation';
 
 @Component({
   selector: 'app-add-accommodation',

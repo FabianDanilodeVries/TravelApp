@@ -11,15 +11,21 @@ export class AddRestaurantComponent implements OnInit {
 
   restaurant: Restaurant;
   restaurantName: string;
+  allRestaurants: Restaurant[];
 
   constructor(private service: AddRestaurantService) { }
 
   ngOnInit(): void {
+   
+  }
+
+  showAllRestaurants() {
+    console.log("het werkt")
     this.service.getByRestaurantName(this.restaurantName).subscribe(
       data => {
         this.restaurant = data;
       }
     );
-  }
 
+}
 }
