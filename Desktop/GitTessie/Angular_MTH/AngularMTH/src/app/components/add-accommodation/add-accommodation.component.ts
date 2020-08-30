@@ -19,7 +19,7 @@ export class AddAccommodationComponent implements OnInit {
   }
 
 
-  showAllAccommodations() {
+  getByAccommodationName() {
     this.service.getByAccommodationName(this.accommodationName).subscribe(
       data => {
         this.accommodation = data;

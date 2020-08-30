@@ -19,7 +19,7 @@ export class AddRestaurantComponent implements OnInit {
    
   }
 
-  showAllRestaurants() {
+  getByRestaurantName() {
     console.log("het werkt")
     this.service.getByRestaurantName(this.restaurantName).subscribe(
       data => {

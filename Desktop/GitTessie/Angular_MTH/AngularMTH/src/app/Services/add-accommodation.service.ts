@@ -16,10 +16,10 @@ export class AddAccommodationService {
   constructor(private http: HttpClient) { }
 
 getByAccommodationName(accommodationName: string): Observable<Accommodation> {
-  return this.http.get<Accommodation>('http://localhost:8889/ShowAllRestaurants');
+  return this.http.get<Accommodation>('http://localhost:8888/findAccommodationByName');
 }
 
 showAllAccommodations(): Observable <Accommodation[]> {
-  return this.http.get<Accommodation[]>('http://localhost:8889/Restaurant/findAllAccommodations');
+  return this.http.get<Accommodation[]>('http://localhost:8888/Restaurant/showAllAccommodations');
 }
 }

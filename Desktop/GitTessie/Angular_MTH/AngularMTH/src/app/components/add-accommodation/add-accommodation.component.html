@@ -1,7 +1,21 @@
+<h1>Accommodations</h1>
 
+<div id="searchaccommodation" class="card">
+  <div class="card-body">
+    <h5 class="card-title">Search Accommodation:</h5> <br>
+    <input type="test" class="form-control" id="restaurantName" aria-describedby="addRestaurant">
+    <br>
+    <button type="submit" class="btn btn-primary" id="getByRestaurantName" (click)="getByAccommodationName()">Search</button>
+  </div>
+</div>
+
+
+
+<div id="addaccommodation" class ="card">
+<div class="card-body">
+    <h5 class="card-title">Add Accommodation:</h5>
 <div id = "accommodationForm">
   <form>
-    <h2>Add Accommodation:</h2>
     <div class="form-group">
         <label for="nameAccommodation">Name:</label>
         <input type="text" class="form-control" id="nameAccommodation" aria-describedby="addAccommodation">
@@ -25,9 +39,7 @@
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
   </div>
-  <button type="button" id="showAllAccommodations()" (click)="showAllAccommodations()">Show all Accommodations</button>
-  <div id="showAllAccommodations">
   </div>
-
+</div>
 
 
