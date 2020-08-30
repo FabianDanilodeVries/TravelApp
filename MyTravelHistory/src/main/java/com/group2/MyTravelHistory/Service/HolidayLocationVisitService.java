@@ -21,6 +21,7 @@ public class HolidayLocationVisitService {
     }
 
     public void deleteHLVisitFromDAO(Long visitId){
+        System.out.println("did we get here? HLVisit SERVICE");
         HLVisitDAO.deleteById(visitId);
     }
 

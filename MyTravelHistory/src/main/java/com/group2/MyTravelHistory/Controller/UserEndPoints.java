@@ -57,15 +57,12 @@ public class UserEndPoints {
     @GetMapping("/user/findByUserName/{userName}")
     public UserDto findUserByName(@PathVariable("userName") String userName){
         System.out.println(userName);
-        System.out.println("We got hereeeeeeey332432");
         Optional<User> userOptional = this.us.findUserByName(userName);
-        System.out.println("We got hereeeeeeey");
         User u = userOptional.get();
         UserDto userDto = new UserDto();
         userDto.setUserId(u.getUserId());
         userDto.setUserName(u.getUserName());
         userDto.setEmail(u.getEmail());
-        System.out.println("blblbl");
         return userDto;
     }
 
