@@ -20,6 +20,6 @@ getByRestaurantName(restaurantName: string): Observable<Restaurant> {
 }
 
 showAllRestaurants(): Observable <Restaurant[]> {
-  return this.http.get<Restaurant[]>('http://localhost:8889/Restaurant/findAllRestaurants');
+  return this.http.get<Restaurant[]>('http://localhost:8889/showAllRestaurants');
 }
 }

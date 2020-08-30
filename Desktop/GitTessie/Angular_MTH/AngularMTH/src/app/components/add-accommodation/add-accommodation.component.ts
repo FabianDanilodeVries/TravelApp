@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Accommodation } from 'src/app/Model/Accommodation';
+import { AddAccommodationService } from 'src/app/Services/add-accommodation.service';
 
 @Component({
   selector: 'app-add-accommodation',
@@ -8,9 +9,25 @@ import { Accommodation } from 'src/app/Model/Accommodation';
 })
 export class AddAccommodationComponent implements OnInit {
 
-  constructor() { }
+  accommodation: Accommodation;
+  accommodationName: string;
+  allRestaurants: Accommodation[];
+
+  constructor(private service: AddAccommodationService ) { }
 
   ngOnInit(): void {
   }
+
+
+  showAllAccommodations() {
+    this.service.getByAccommodationName(this.accommodationName).subscribe(
+      data => {
+        this.accommodation = data;
+      }
+    );
+
+}
+
+
 
 }

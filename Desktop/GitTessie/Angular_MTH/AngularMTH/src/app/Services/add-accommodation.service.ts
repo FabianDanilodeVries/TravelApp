@@ -16,7 +16,7 @@ export class AddAccommodationService {
   constructor(private http: HttpClient) { }
 
 getByAccommodationName(accommodationName: string): Observable<Accommodation> {
-  return this.http.get<Accommodation>('http://localhost:8889/api/accommodation/all');
+  return this.http.get<Accommodation>('http://localhost:8889/ShowAllRestaurants');
 }
 
 showAllAccommodations(): Observable <Accommodation[]> {
