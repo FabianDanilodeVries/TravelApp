@@ -13,8 +13,9 @@ public interface HolidayLocationVisitDAO extends CrudRepository <HolidayLocation
     @Query(nativeQuery = true, value = "SELECT * FROM holiday_location_visit WHERE country =?1")
     List<HolidayLocationVisit> searchHLVisitDAOByCountry(String country);
 
-    @Query(nativeQuery = true, value = "SELECT * FROM holiday_lcoation_visit WHERE user_id=?1")
-    List<HolidayLocationVisit> findAllHLVisitByUserId(Long userId);
+//    @Query(nativeQuery = true, value = "SELECT * FROM holiday_location_visit WHERE userId=?1")
+//    List<HolidayLocationVisit> findAllHLVisitByUserId(Long userId);
+        List<HolidayLocationVisit> findHolidayLocationVisitByUserUserId(Long userId);
 
 
 //    @Query(value = "SELECT u FROM User u")

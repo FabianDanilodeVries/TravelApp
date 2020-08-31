@@ -12,19 +12,24 @@ public class HolidayLocationVisit {
     private double rating;
     private Date datum;
     @ManyToOne
+    @JoinColumn(foreignKey = @ForeignKey(name = "restId"))
     private Restaurant restaurant;
     @ManyToOne
+    @JoinColumn(foreignKey = @ForeignKey(name = "accId"))
     private Accommodation accommodation;
+    @JoinColumn(foreignKey = @ForeignKey(name = "userId"))
     @ManyToOne
     private User user;
+    private String visitType;
 
     public HolidayLocationVisit() {
     }
 
-    public HolidayLocationVisit(String comment, double rating, Date datum) {
+    public HolidayLocationVisit(String comment, double rating, Date datum, String visitType) {
         this.comment = comment;
         this.rating = rating;
         this.datum = datum;
+        this.visitType = visitType;
     }
 
     public Long getVisitId() {
@@ -77,5 +82,13 @@ public class HolidayLocationVisit {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getVisitType() {
+        return visitType;
+    }
+
+    public void setVisitType(String visitType) {
+        this.visitType = visitType;
     }
 }

@@ -25,7 +25,9 @@ public class HolidayLocationVisitEndPoints {
     }
 
     @GetMapping("/HLVisit/findUserHLVisits/{userId}")
-    public List<HolidayLocationVisit> findUserHLVisits(@PathVariable("userName") Long userId){
+    public List<HolidayLocationVisit> findUserHLVisits(@PathVariable("userId") Long userId){
+//        System.out.println("We got here");
+//        System.out.println(HLVisitService.findUserHLVisits(userId).size());
         return HLVisitService.findUserHLVisits(userId);
     }
 

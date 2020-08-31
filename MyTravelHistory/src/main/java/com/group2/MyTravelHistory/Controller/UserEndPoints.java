@@ -1,6 +1,7 @@
 package com.group2.MyTravelHistory.Controller;
 
 
+import com.group2.MyTravelHistory.Dto.UserDto;
 import com.group2.MyTravelHistory.Model.Login;
 import com.group2.MyTravelHistory.Model.User;
 import com.group2.MyTravelHistory.Service.UserService;
@@ -18,12 +19,14 @@ public class UserEndPoints {
 
     @PostMapping("/user/createNewUser")
     public void createNewUser(@RequestBody User newUser){
+        System.out.println("we get ehre");
         us.addUserToDao(newUser);
     }
 
     @PostMapping(path="/user/logIn", produces = "application/json")
     public ResponseEntity<String> userLogIn(@RequestBody Login login){
         Optional<User> userOptional = this.us.checkLogInCredentials(login.getUserName(),login.getPassword());
+        System.out.println("We got hereeeeeeey");
         if(userOptional.isPresent()){
 //            User u = userOptional.get();
 //            UserDto userDto = new UserDto();
@@ -52,8 +55,15 @@ public class UserEndPoints {
 
 
     @GetMapping("/user/findByUserName/{userName}")
-    public Optional<User> findUserByName(@PathVariable("userName") String userName){
-        return this.us.findUserByName(userName);
+    public UserDto findUserByName(@PathVariable("userName") String userName){
+        System.out.println(userName);
+        Optional<User> userOptional = this.us.findUserByName(userName);
+        User u = userOptional.get();
+        UserDto userDto = new UserDto();
+        userDto.setUserId(u.getUserId());
+        userDto.setUserName(u.getUserName());
+        userDto.setEmail(u.getEmail());
+        return userDto;
     }
 
 

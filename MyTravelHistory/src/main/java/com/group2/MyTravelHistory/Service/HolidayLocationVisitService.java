@@ -21,11 +21,12 @@ public class HolidayLocationVisitService {
     }
 
     public void deleteHLVisitFromDAO(Long visitId){
+        System.out.println("did we get here? HLVisit SERVICE");
         HLVisitDAO.deleteById(visitId);
     }
 
     public List<HolidayLocationVisit> findUserHLVisits(Long userId){
-        return HLVisitDAO.findAllHLVisitByUserId(userId);
+        return HLVisitDAO.findHolidayLocationVisitByUserUserId(userId);
     }
 
     public List<HolidayLocationVisit> searchHLVisitByCountry(String country){
