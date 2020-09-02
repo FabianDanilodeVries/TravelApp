@@ -15,17 +15,17 @@ public class AccommodationEndPoints {
     @Autowired
     AccommodationService accService;
 
-    @PostMapping("/user/addNewAccommodation")
+    @PostMapping("/Accommodation/addNewAccommodation")
     public void createNewAccommodation(@RequestBody Accommodation newAccommodation){
         accService.addAccommodationToDao(newAccommodation);
     }
 
-    @GetMapping("/user/showAllAccommodations")
+    @GetMapping("/Accommodation/ShowAllAccommodations")
     public Iterable<Accommodation> showAllAccommodations(){
         return this.accService.findAllAccommodationsFromDAO();
     }
 
-    @GetMapping("/user/findAccommodationByName/{accommodationName}")
+    @GetMapping("/Accommodation/findAccommodationByName/{accommodationName}")
     public List<AccommodationByNameDto> findAccommodationByNameLike(@PathVariable("accommodationName") String accommodationName){
         List<Accommodation> accommodationList = this.accService.findAccommodationByNameLike("%" + accommodationName + "%");
         List<AccommodationByNameDto> accBYNameDtoList = new ArrayList<>();

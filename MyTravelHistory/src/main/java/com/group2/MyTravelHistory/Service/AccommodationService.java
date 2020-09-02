@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -25,6 +26,9 @@ public class AccommodationService {
 
     public List<Accommodation> findAccommodationByNameLike(String accommodationName){
         return accDAO.findByAccommodationNameLike(accommodationName);
+    }
+    public Optional<Accommodation> findAccommodationById(Long id){
+        return accDAO.findById(id);
     }
 
 }

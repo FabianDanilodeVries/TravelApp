@@ -19,14 +19,12 @@ public class UserEndPoints {
 
     @PostMapping("/user/createNewUser")
     public void createNewUser(@RequestBody User newUser){
-        System.out.println("we get ehre");
         us.addUserToDao(newUser);
     }
 
     @PostMapping(path="/user/logIn", produces = "application/json")
     public ResponseEntity<String> userLogIn(@RequestBody Login login){
         Optional<User> userOptional = this.us.checkLogInCredentials(login.getUserName(),login.getPassword());
-        System.out.println("We got hereeeeeeey");
         if(userOptional.isPresent()){
 //            User u = userOptional.get();
 //            UserDto userDto = new UserDto();
@@ -65,15 +63,4 @@ public class UserEndPoints {
         userDto.setEmail(u.getEmail());
         return userDto;
     }
-
-
-
-
-//    @GetMapping("/checkCredentials")
-//    public void checkCredentials(@RequestBody String userName,String password){
-////        us.checkUserInDAO(userName,password);
-//    }
-
-
-
 }

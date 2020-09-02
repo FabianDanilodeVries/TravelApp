@@ -32,4 +32,8 @@ public class UserService {
         return uDao.findByUserName(userName);
     }
 
+    public Optional<User> findUserById(Long id){
+        return uDao.findById(id);
+    }
+
 }
