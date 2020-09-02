@@ -15,12 +15,12 @@ public class RestaurantEndPoints {
     @Autowired
     RestaurantService resService;
 
-    @GetMapping("Restaurant/ShowAllRestaurants")
+    @GetMapping("/Restaurant/ShowAllRestaurants")
     public Iterable<Restaurant> showAllRestaurants(){
         return resService.getAllRestaurantsFromDAO();
     }
 
-    @GetMapping("Restaurant/GetByName/{restaurantName}")
+    @GetMapping("/Restaurant/GetByName/{restaurantName}")
     public RestaurantDto getByName(@PathVariable("restaurantName") String restaurantName) {
         Optional<Restaurant> restaurantOptional = this.resService.getByName(restaurantName);
         Restaurant r = restaurantOptional.get();
@@ -33,6 +33,8 @@ public class RestaurantEndPoints {
         restaurantDTO.setNumberOfTables(r.getNumberOfTables());
         return restaurantDTO;
     }
+
+
 
 
 

@@ -25,5 +25,9 @@ public class RestaurantService {
         return resDAO.getByRestaurantName(restaurantName);
     }
 
+    public Optional<Restaurant> findRestaurantById(Long id){
+        System.out.println("service "  + id);
+        return resDAO.findById(id);
+    }
 
 }
