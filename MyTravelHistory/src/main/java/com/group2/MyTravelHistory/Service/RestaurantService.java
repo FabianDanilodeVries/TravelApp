@@ -16,7 +16,6 @@ public class RestaurantService {
     RestaurantDAO resDAO;
 
     public Iterable<Restaurant> getAllRestaurantsFromDAO(){
-        System.out.println("We got here");
         return resDAO.findAll();
     }
 
@@ -26,7 +25,6 @@ public class RestaurantService {
     }
 
     public Optional<Restaurant> findRestaurantById(Long id){
-        System.out.println("service "  + id);
         return resDAO.findById(id);
     }
 

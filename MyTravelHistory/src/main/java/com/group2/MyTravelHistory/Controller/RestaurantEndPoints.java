@@ -33,9 +33,4 @@ public class RestaurantEndPoints {
         restaurantDTO.setNumberOfTables(r.getNumberOfTables());
         return restaurantDTO;
     }
-
-
-
-
-
 }

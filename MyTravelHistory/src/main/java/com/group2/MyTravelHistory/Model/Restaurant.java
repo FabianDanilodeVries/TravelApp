@@ -74,7 +74,7 @@ public class Restaurant {
     }
 
     public void updateRestaurantAverageRating(double rating) {
-        this.restaurantAverageRating = (((this.restaurantAverageRating*this.ratingCount)+rating)/(this.ratingCount + 1));
+        this.restaurantAverageRating = (((this.restaurantAverageRating*this.ratingCount)+rating)/(getRatingCount() + 1));
         updateRatingCount();
     }
 
@@ -82,8 +82,8 @@ public class Restaurant {
         return ratingCount;
     }
 
-    public void updateRatingCount() {
-        this.ratingCount +=1;
+    public void updateRatingCount(){
+        this.ratingCount += 1;
     }
 
     public String getRestaurantType() {
