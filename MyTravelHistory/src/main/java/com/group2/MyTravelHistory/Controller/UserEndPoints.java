@@ -44,9 +44,8 @@ public class UserEndPoints {
 
     @GetMapping(path="/user/getUserId/{userName}",produces = "application/json")
     public Long getUserId(@PathVariable("userName") String userName){
-        System.out.println(userName);
+
         Long theId = us.findUserByName(userName).get().getUserId();
-        System.out.println(theId);
 
         return theId;
     }
@@ -54,7 +53,6 @@ public class UserEndPoints {
 
     @GetMapping("/user/findByUserName/{userName}")
     public UserDto findUserByName(@PathVariable("userName") String userName){
-        System.out.println(userName);
         Optional<User> userOptional = this.us.findUserByName(userName);
         User u = userOptional.get();
         UserDto userDto = new UserDto();

@@ -73,17 +73,18 @@ public class Accommodation {
     }
 
     public void updateAccommodationAverageRating(double rating) {
-        this.accommodationAverageRating = (((this.accommodationAverageRating*this.ratingCount)+rating)/(this.ratingCount + 1));
+        this.accommodationAverageRating = (((this.accommodationAverageRating*this.ratingCount)+rating)/(getRatingCount() + 1));
         updateRatingCount();
     }
 
     public int getRatingCount() {
-        return ratingCount;
+        return this.ratingCount;
     }
 
-    public void updateRatingCount() {
-        this.ratingCount +=1;
+    public void updateRatingCount(){
+        this.ratingCount += 1;
     }
+
 
     public String getAccommodationType() {
         return accommodationType;

@@ -33,11 +33,13 @@ public class HolidayLocationVisitEndPoints {
         newHolidayLocationVisit.setVisitType(holidayLocationVisitDto.getVisitType());
         if (holidayLocationVisitDto.getAccId() != null){
             newHolidayLocationVisit.setAccommodation(accommodationService.findAccommodationById(holidayLocationVisitDto.getAccId()).get());
+            accommodationService.findAccommodationById(holidayLocationVisitDto.getAccId()).get().updateAccommodationAverageRating(holidayLocationVisitDto.getRating());
         }else {
             newHolidayLocationVisit.setAccommodation(null);
         }
         if(holidayLocationVisitDto.getRestId() != null){
            newHolidayLocationVisit.setRestaurant(restaurantService.findRestaurantById(holidayLocationVisitDto.getRestId()).get());
+            restaurantService.findRestaurantById(holidayLocationVisitDto.getRestId()).get().updateRestaurantAverageRating(holidayLocationVisitDto.getRating());
         }else{
             newHolidayLocationVisit.setRestaurant(null);
         }
@@ -53,8 +55,6 @@ public class HolidayLocationVisitEndPoints {
 
     @GetMapping("/HLVisit/findUserHLVisits/{userId}")
     public List<HolidayLocationVisit> findUserHLVisits(@PathVariable("userId") Long userId){
-//        System.out.println("We got here");
-//        System.out.println(HLVisitService.findUserHLVisits(userId).size());
         return HLVisitService.findUserHLVisits(userId);
     }
 
